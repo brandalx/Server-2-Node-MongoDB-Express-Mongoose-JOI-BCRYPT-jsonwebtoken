@@ -78,5 +78,37 @@ router.post("/", async (req, res) => {
   }
 });
 
+// PUT request to handle an updating the existed item in the data base:
+/* Example for valid PUT request through POSTMAN:
+In POSTMAN  change: request type to to PUT, adress to:http://localhost:3002/categories/63ec320306de5f46ed50082d
+
+{
+        "name": "This is will be new updated category",
+        "info": "Athletic gear and outdoor equipment",
+        "cat_url": "https://example.com/sports-outdoors",
+        "img_url": "https://example.com/sports-outdoors.jpg"
+}
+*/
+
+//Id will be added through an params option
+router.put("/:id", async (req, res) => {
+  //Joi checks
+  let validBody = validateJoi(req.body);
+  if (validBody.error) {
+    return res.status(400).json(validBody.error.details);
+  }
+  try {
+    //id definition
+    let id = req.params.id;
+    //Actual update of existed ibject by provided ID
+    let data = await CategoryModel.updateOne({ _id: id }, req.body);
+    res.json(data);
+  } catch (err) {
+    //error handle
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
 //exports whole route to config routes
 module.exports = router;
