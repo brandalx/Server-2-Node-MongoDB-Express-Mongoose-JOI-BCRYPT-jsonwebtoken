@@ -1,0 +1,86 @@
+[
+  {
+    "name": "Espresso",
+    "info": "A small, strong coffee made by forcing steam through finely ground coffee beans.",
+    "type": "Coffee",
+    "price": 2.5,
+    "img_url": "https://example.com/espresso.jpg"
+  },
+  {
+    "name": "Latte",
+    "info": "A coffee drink made with espresso and steamed milk.",
+    "type": "Coffee",
+    "price": 3.5,
+    "img_url": "https://example.com/latte.jpg"
+  },
+  {
+    "name": "Cappuccino",
+    "info": "A coffee drink made with espresso, steamed milk, and a layer of frothed milk.",
+    "type": "Coffee",
+    "price": 3.5,
+    "img_url": "https://example.com/cappuccino.jpg"
+  },
+  {
+    "name": "Mocha",
+    "info": "A coffee drink made with espresso, chocolate, and steamed milk.",
+    "type": "Coffee",
+    "price": 4.0,
+    "img_url": "https://example.com/mocha.jpg"
+  },
+  {
+    "name": "Americano",
+    "info": "A coffee drink made with espresso and hot water.",
+    "type": "Coffee",
+    "price": 3.0,
+    "img_url": "https://example.com/americano.jpg"
+  },
+  {
+    "name": "Green Tea",
+    "info": "A tea made from unfermented leaves.",
+    "type": "Tea",
+    "price": 2.5,
+    "img_url": "https://example.com/greentea.jpg"
+  },
+  {
+    "name": "Black Tea",
+    "info": "A tea made from fermented leaves.",
+    "type": "Tea",
+    "price": 2.5,
+    "img_url": "https://example.com/blacktea.jpg"
+  },
+  {
+    "name": "Chai Tea",
+    "info": "A tea made from black tea and a blend of spices.",
+    "type": "Tea",
+    "price": 3.5,
+    "img_url": "https://example.com/chai.jpg"
+  },
+  {
+    "name": "Earl Grey Tea",
+    "info": "A tea made from black tea and bergamot orange.",
+    "type": "Tea",
+    "price": 3.0,
+    "img_url": "https://example.com/earlgrey.jpg"
+  },
+  {
+    "name": "Matcha Latte",
+    "info": "A latte made with matcha powder and steamed milk.",
+    "type": "Tea",
+    "price": 4.5,
+    "img_url": "https://example.com/matchalatte.jpg"
+  },
+  {
+    "name": "Orange Juice",
+    "info": "A juice made from oranges.",
+    "type": "Juice",
+    "price": 3.0,
+    "img_url": "https://example.com/orangejuice.jpg"
+  },
+  {
+    "name": "Apple Juice",
+    "info": "A juice made from apples.",
+    "type": "Juice",
+    "price": 3.0,
+    "img_url": "https://example.com/applejuice.jpg"
+  }
+]

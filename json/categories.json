@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Electronics",
+    "info": "All kinds of electronics and gadgets",
+    "cat_url": "https://example.com/electronics",
+    "img_url": "https://example.com/electronics.jpg"
+  },
+  {
+    "name": "Fashion",
+    "info": "Clothing, shoes, and accessories",
+    "cat_url": "https://example.com/fashion",
+    "img_url": "https://example.com/fashion.jpg"
+  },
+  {
+    "name": "Home & Garden",
+    "info": "Furniture, decor, and appliances",
+    "cat_url": "https://example.com/home-garden",
+    "img_url": "https://example.com/home-garden.jpg"
+  },
+  {
+    "name": "Beauty & Personal Care",
+    "info": "Makeup, skincare, and grooming",
+    "cat_url": "https://example.com/beauty-personal-care",
+    "img_url": "https://example.com/beauty-personal-care.jpg"
+  },
+  {
+    "name": "Sports & Outdoors",
+    "info": "Athletic gear and outdoor equipment",
+    "cat_url": "https://example.com/sports-outdoors",
+    "img_url": "https://example.com/sports-outdoors.jpg"
+  },
+  {
+    "name": "Toys & Games",
+    "info": "Games, puzzles, and toys for all ages",
+    "cat_url": "https://example.com/toys-games",
+    "img_url": "https://example.com/toys-games.jpg"
+  },
+  {
+    "name": "Books",
+    "info": "Fiction, non-fiction, and educational books",
+    "cat_url": "https://example.com/books",
+    "img_url": "https://example.com/books.jpg"
+  },
+  {
+    "name": "Food & Drink",
+    "info": "Snacks, beverages, and gourmet items",
+    "cat_url": "https://example.com/food-drink",
+    "img_url": "https://example.com/food-drink.jpg"
+  },
+  {
+    "name": "Music & Movies",
+    "info": "CDs, vinyl, DVDs, and Blu-rays",
+    "cat_url": "https://example.com/music-movies",
+    "img_url": "https://example.com/music-movies.jpg"
+  },
+  {
+    "name": "Automotive",
+    "info": "Cars, trucks, and auto parts",
+    "cat_url": "https://example.com/automotive",
+    "img_url": "https://example.com/automotive.jpg"
+  },
+  {
+    "name": "Health & Wellness",
+    "info": "Vitamins, supplements, and fitness equipment",
+    "cat_url": "https://example.com/health-wellness",
+    "img_url": "https://example.com/health-wellness.jpg"
+  },
+  {
+    "name": "Pet Supplies",
+    "info": "Food, toys, and accessories for pets",
+    "cat_url": "https://example.com/pet-supplies",
+    "img_url": "https://example.com/pet-supplies.jpg"
+  },
+  {
+    "name": "Travel",
+    "info": "Flights, hotels, and vacation packages",
+    "cat_url": "https://example.com/travel",
+    "img_url": "https://example.com/travel.jpg"
+  }
+]
