@@ -36,11 +36,14 @@ router.get("/", async (req, res) => {
 //Query example: http://localhost:3002/categories/search/?search=hotel
 router.get("/search", async (req, res) => {
   let querySearch = req.query.search;
+  //Regular Expression added to handle query request as non key sensative "i"
   let searchExpression = new RegExp(querySearch, "i");
   try {
     let data = await CategoryModel.find({
+      // Or built in Mongoose function for Mongo DB to make search for both keys name and info
       $or: [{ name: searchExpression }, { info: searchExpression }],
     }).limit(20);
+    //limits result as 20 items max
     res.json(data);
   } catch (err) {
     console.log(err);
