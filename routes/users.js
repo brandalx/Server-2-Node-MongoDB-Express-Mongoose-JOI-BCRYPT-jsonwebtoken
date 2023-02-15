@@ -87,7 +87,7 @@ router.post("/login", async (req, res) => {
     }
     // Checks if the encrypted password in the database matches the password in body sended, if not throws error
     let validPassword = await bcrypt.compare(req.body.password, user.password);
-    if (validPassword) {
+    if (!validPassword) {
       return res.status(401).json({ msg: "Password you're entered is wrong" });
     }
     // The user will be sent a token that will allow him to be in areas that require permission;
