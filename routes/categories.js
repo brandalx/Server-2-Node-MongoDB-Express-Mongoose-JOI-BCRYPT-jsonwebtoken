@@ -2,8 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { CategoryModel, validateJoi } = require("../models/categoriesModel");
 
+//In POSTMAN  change: request type to to GET, choose Body ===> row
+
 // GET request handle
 //Query example: http://localhost:3002/categories/?page=1&sort=name&desc=yes
+
 router.get("/", async (req, res) => {
   //variable to use per page
   let perPage = 5;
@@ -45,8 +48,10 @@ router.get("/search", async (req, res) => {
   }
 });
 
-// POST request to handle an adding the new item to data base
+// POST request to handle an adding the new item to data base:
 /* Example for valid POST request through POSTMAN:
+In POSTMAN  change: request type to to POST, adress to: http://localhost:3002/categories/
+
 {
         "name": "This is new category",
         "info": "Athletic gear and outdoor equipment",
