@@ -53,5 +53,36 @@ router.get("/search", async (req, res) => {
   }
 });
 
+// POST request to handle an adding the new item to data base:
+/* Example for valid POST request through POSTMAN:
+In POSTMAN  change: request type to to POST, adress to: http://localhost:3002/drinks/
+
+{
+        "name": "This is new drinks item",
+        "info": "A juice made from oranges.",
+        "type": "Juice",
+        "price": 3,
+        "img_url": "https://example.com/orangejuice.jpg"
+}
+*/
+
+router.post("/", async (req, res) => {
+  //Checks first that returned object from Joi validation is even valid, if not throws an error and not continues to make POST request
+  let validBody = validateJoi(req.body);
+  if (validBody.error) {
+    return res.status(400).json(validBody.error.details);
+  }
+  //If returned Joi schema is valid creates an new obejct in JSON  and puts it in data base
+  try {
+    let category = new DrinkModel(req.body);
+    await category.save();
+    res.json(category);
+    //if any error occures will throw an error
+  } catch (err) {
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
 //exports whole drinks route to config routes
 module.exports = router;
