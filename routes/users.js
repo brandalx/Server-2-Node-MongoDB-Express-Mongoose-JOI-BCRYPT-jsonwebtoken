@@ -46,7 +46,7 @@ router.get("/userInfo", async (req, res) => {
 
 //POST Route for creating a new user with a hashed password by using bcrypt
 router.post("/", async (req, res) => {
-  let validBody = validateJoi.apply(req.body);
+  let validBody = validateJoi(req.body);
   if (validBody.error) {
     return res.status(400).json(validBody.error.details);
   }
