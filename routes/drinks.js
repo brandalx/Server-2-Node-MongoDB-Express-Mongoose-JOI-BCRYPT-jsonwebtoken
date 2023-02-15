@@ -84,5 +84,64 @@ router.post("/", async (req, res) => {
   }
 });
 
+// PUT request to handle an updating the existed item in the data base:
+/* Example for valid PUT request through POSTMAN:
+In POSTMAN  change: request type to to PUT, adress to: http://localhost:3002/drinks/63ec320e06de5f46ed500830
+
+{
+        "name": "This is updated drinks item",
+        "info": "A juice made from oranges.",
+        "type": "Juice",
+        "price": 3,
+        "img_url": "https://example.com/orangejuice.jpg"
+}
+*/
+
+//Id will be added through an params option
+router.put("/:id", async (req, res) => {
+  //Joi checks
+  let validBody = validateJoi(req.body);
+  if (validBody.error) {
+    return res.status(400).json(validBody.error.details);
+  }
+  try {
+    //id definition
+    let id = req.params.id;
+    //Actual update of existed ibject by provided ID
+    let data = await DrinkModel.updateOne({ _id: id }, req.body);
+    res.json(data);
+  } catch (err) {
+    //error handle
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
+// DELETE request to handle an delete item from the data base:
+/* Example for valid DELETE request through POSTMAN:
+In POSTMAN  change: request type to to DELETE, adress to: http://localhost:3002/drinks/63eccbb3eb6b0d0b63d1be1e
+*/
+
+router.delete("/:id", async (req, res) => {
+  try {
+    //params defenition
+    let id = req.params.id;
+    // deletes by provided id
+    let data = await DrinkModel.deleteOne({ _id: id });
+    // response about succ delete
+    /* POSTMAN will display something like: 
+{
+    "acknowledged": true,
+    "deletedCount": 1
+}
+*/
+    res.json(data);
+    // if not will throw to an error
+  } catch (err) {
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
 //exports whole drinks route to config routes
 module.exports = router;
