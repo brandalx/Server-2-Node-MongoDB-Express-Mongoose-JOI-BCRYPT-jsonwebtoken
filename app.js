@@ -12,11 +12,11 @@ const app = express();
 //To send body from client side
 app.use(express.json());
 
+routesInit(app);
+
 // Define a static folder that will be the "public" folder
 app.use(express.static(path.join(__dirname, "public")));
 
-routesInit(app);
-
 const server = http.createServer(app);
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3002;
 server.listen(port);
