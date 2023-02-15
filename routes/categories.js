@@ -110,5 +110,30 @@ router.put("/:id", async (req, res) => {
   }
 });
 
+// DELETE request to handle an delete item from the data base:
+/* Example for valid DELETE request through POSTMAN:
+In POSTMAN  change: request type to to DELETE, adress to:http://localhost:3002/categories/63ec320306de5f46ed50082d 
+*/
+router.delete("/:id", async (req, res) => {
+  try {
+    //params defenition
+    let id = req.params.id;
+    // deletes by provided id
+    let data = await CategoryModel.deleteOne({ _id: id });
+    // response about succ delete
+    /* POSTMAN will display something like: 
+{
+    "acknowledged": true,
+    "deletedCount": 1
+}
+*/
+    res.json(data);
+    // if not will throw to an error
+  } catch (err) {
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
 //exports whole route to config routes
 module.exports = router;
