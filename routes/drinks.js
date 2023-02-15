@@ -30,5 +30,28 @@ router.get("/", async (req, res) => {
   }
 });
 
+// GET request to search handle
+//Query example: http://localhost:3002/drinks/search/?search=hotel
+router.get("/search", async (req, res) => {
+  let querySearch = req.query.search;
+  //Regular Expression added to handle query request as non key sensative "i"
+  let searchExpression = new RegExp(querySearch, "i");
+  try {
+    let data = await DrinkModel.find({
+      // Or built in Mongoose function for Mongo DB to make search for keys name, info, type of the drink
+      $or: [
+        { name: searchExpression },
+        { info: searchExpression },
+        { type: searchExpression },
+      ],
+    }).limit(20);
+    //limits result as 20 items max
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
 //exports whole drinks route to config routes
 module.exports = router;
