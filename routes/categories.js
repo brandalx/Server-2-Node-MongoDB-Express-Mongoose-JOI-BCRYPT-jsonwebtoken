@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 const { CategoryModel } = require("../models/categoriesModel");
 
+// GET request handle
+//Query example: http://localhost:3002/categories/?page=1&sort=name&desc=yes
 router.get("/", async (req, res) => {
   //variable to use per page
   let perPage = 5;
@@ -20,6 +22,22 @@ router.get("/", async (req, res) => {
       .skip(page * perPage)
       //makes an possible to sort by choosen option
       .sort({ [sort]: desc });
+    res.json(data);
+  } catch (err) {
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
+// GET request to search handle
+//Query example: http://localhost:3002/categories/search/?search=hotel
+router.get("/search", async (req, res) => {
+  let querySearch = req.query.search;
+  let searchExpression = new RegExp(querySearch, "i");
+  try {
+    let data = await CategoryModel.find({
+      $or: [{ name: searchExpression }, { info: searchExpression }],
+    }).limit(20);
     res.json(data);
   } catch (err) {
     console.log(err);
