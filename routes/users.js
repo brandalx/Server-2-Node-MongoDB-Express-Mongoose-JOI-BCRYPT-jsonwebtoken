@@ -5,6 +5,7 @@ const {
   UserModel,
   validateJoi,
   validateLogin,
+  createToken,
 } = require("../models/userModel");
 const bcrypt = require("bcrypt");
 
