@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { CategoryModel } = require("../models/categoriesModel");
+const { CategoryModel, validateJoi } = require("../models/categoriesModel");
 
 // GET request handle
 //Query example: http://localhost:3002/categories/?page=1&sort=name&desc=yes
@@ -45,4 +45,33 @@ router.get("/search", async (req, res) => {
   }
 });
 
+// POST request to handle an adding the new item to data base
+/* Example for valid POST request through POSTMAN:
+{
+        "name": "This is new category",
+        "info": "Athletic gear and outdoor equipment",
+        "cat_url": "https://example.com/sports-outdoors",
+        "img_url": "https://example.com/sports-outdoors.jpg"
+}
+*/
+
+router.post("/", async (req, res) => {
+  //Checks first that returned object from Joi validation is even valid, if not throws an error and not continues to make POST request
+  let validBody = validateJoi(req.body);
+  if (validBody.error) {
+    return res.status(400).json(validBody.error.details);
+  }
+  //If returned Joi schema is valid creates an new obejct in JSON  and puts it in data base
+  try {
+    let category = new CategoryModel(req.body);
+    await category.save();
+    res.json(category);
+    //if any error occures will throw an error
+  } catch (err) {
+    console.log(err);
+    res.status(502).json({ err });
+  }
+});
+
+//exports whole route to config routes
 module.exports = router;
