@@ -10,7 +10,10 @@ const {
 const bcrypt = require("bcrypt");
 
 //Function to generate random amount of starts when JSON response will be returned to the user;
-const randomStars = "*".repeat(Math.floor(Math.random() * 10) + 1);
+const randomStars = () => {
+  let generate = "*".repeat(Math.floor(Math.random() * 10) + 1);
+  return generate;
+};
 
 //To someone will have not direct access to the users data base it will send by / to default users route endpoint
 router.get("/", async (req, res) => {
@@ -35,7 +38,7 @@ router.get("/userInfo", async (req, res) => {
       //Searches the user record that matches the _id extracted from the decoded token
       { _id: decodeToken._id },
       // Exclude the user's password from the retrieved data by creating random amount of "*"
-      { password: randomStars }
+      { password: 0 }
     );
     res.json(data);
   } catch (err) {
@@ -58,12 +61,12 @@ router.post("/", async (req, res) => {
     //Then save to Mongo DB occures
     await user.save();
     // Exclude the user's password from the retrieved data by creating random amount of "*"
-    user.password = randomStars;
+    user.password = randomStars();
     //JSON wth user data returns to the user
     res.json(user);
   } catch (err) {
     //If a user with the same email already exists in the system the route throwns error
-    if ((err.code = 11000)) {
+    if (err.code == 11000) {
       return res.status(400).json({
         msg: "This email is already exist in our system, please try log in again",
         code: 11000,
