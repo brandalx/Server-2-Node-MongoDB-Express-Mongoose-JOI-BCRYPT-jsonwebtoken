@@ -27,3 +27,18 @@ exports.validateJoi = (_reqBody) => {
   //returns valid schema
   return joiSchema.validate(_reqBody);
 };
+// Function thats generates a JSON web token for a given user id
+exports.createToken = (user_id) => {
+  //                        payload    | the secret key |  options object (will expire in 60 minutes)
+  let token = jwt.sign({ _id: user_id }, "secretWord", { expiresIn: "60mins" });
+  return token;
+};
+
+//Joi validation schema for Log in
+exports.validateLogin = (_reqBody) => {
+  let joiSchema = Joi.object({
+    email: Joi.string().min(1).max(300).email().required(),
+    password: Joi.string().min(1).max(100).required(),
+  });
+  return joiSchema.validate(_reqBody);
+};
